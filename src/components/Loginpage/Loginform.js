@@ -14,7 +14,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 
 const paperStyle = {
   padding: 20,
-  height: "74vh",
+  height: "62vh",
   width: 280,
   margin: "20px auto",
 };

@@ -13,7 +13,6 @@ const initialState = {
 };
 
 const Cart = () => {
-  // const [item, setItem] = useState(products);
   const [state, dispatch] = useReducer(reducer, initialState);
 
   // to delete the indv. elements from an Item Cart
@@ -48,7 +47,6 @@ const Cart = () => {
   // we will use the useEffect to update the data
   useEffect(() => {
     dispatch({ type: "GET_TOTAL" });
-    // console.log("Awesome");
   }, [state.item]);
 
   return (

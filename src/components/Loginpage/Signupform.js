@@ -12,14 +12,14 @@ import {
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
-const paperStyle = {
-  padding: 20,
-  height: "74vh",
-  width: 280,
-  margin: "20px auto",
-};
-const btnstyle = { margin: "8px 0", background: "#1976d2", color: "#FFFFFF" };
-const linkstyle = { color: "#1976d2" };
+  const paperStyle = {
+    padding: 20,
+    height: "75vh",
+    width: 280,
+    margin: "20px auto",
+  };
+  const btnstyle = { margin: "8px 0", background: "#1976d2", color: "#FFFFFF" };
+  const linkstyle = { color: "#1976d2" };
 
 const Signupform = () => {
 

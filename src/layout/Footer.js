@@ -16,9 +16,9 @@ const Footer = () => {
       position: "sticky",
       bottom: 0,
     }}>
-      <Typography sx={{ textAlign: "center" }}>
+      <Typography sx={{ textAlign: "center", }}>
         Copyright © Speed Force Digital - Digital Business Partners – 2006 -
-        2022, All rights reserved.{" "}
+        2022, All rights reserved.
       </Typography>
       </Box>
   );

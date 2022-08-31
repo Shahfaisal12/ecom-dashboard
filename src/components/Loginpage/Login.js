@@ -7,7 +7,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import Loginform from "./Loginform";
 import Signupform from "./Signupform";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
-import LogoutIcon from "@mui/icons-material/Logout";
+import LoginIcon from '@mui/icons-material/Login';
 
 const Login = () => {
   const [value, setValue] = React.useState("2");
@@ -20,8 +20,8 @@ const Login = () => {
       <TabContext install value={value}>
         <Box sx={{ borderBottom: 1, borderColor: "divider"}}>
           <TabList onChange={handleChange} aria-label="lab API tabs example" centered>
-            <Tab icon={<LockOpenIcon />} label="Sign In" value="1" />
-            <Tab icon={<LogoutIcon />} label="Sign Up" value="2" />
+            <Tab icon={<LoginIcon />} iconPosition="end" label="Sign In" value="1" />
+            <Tab icon={<LockOpenIcon />} iconPosition="end" label="Sign Up" value="2" />
           </TabList>
         </Box>
         <TabPanel value="1">{<Loginform />}</TabPanel>

@@ -47,7 +47,7 @@ const Img = styled("img")({
   maxHeight: "100%",
 });
 
-  //Main function
+//Main function
 const MyCart = (id, quantity, state, action) => {
   //Increment Number // Decrement Number
   const [cart, setCart] = useState(card);
@@ -84,28 +84,26 @@ const MyCart = (id, quantity, state, action) => {
   };
   // End//Increment Number // Decrement Number
 
-
-   // to delete the indv. elements from an Item Cart
-   const removeItem = (id) => {
+  // to delete the indv. elements from an Item Cart
+  const removeItem = (id) => {
     return setCart({
       type: "REMOVE_ITEM",
       payload: id,
     });
   };
 
-    if (cart.type === "REMOVE_ITEM") {
-      return {
-        ...state,
-        item: state.cartTemp.filter((curElem) => {
-          return curElem.id !== cart.payload;
-        }),
-      };
-    }
+  if (cart.type === "REMOVE_ITEM") {
+    return {
+      ...state,
+      item: state.cartTemp.filter((curElem) => {
+        return curElem.id !== cart.payload;
+      }),
+    };
+  }
+  //End Delete item
 
-    
   return (
     <>
-
       <BreadCrumb />
 
       <Grid container spacing={3} sx={{ pr: 2, mb: 5, mt: 2 }}>
@@ -140,12 +138,20 @@ const MyCart = (id, quantity, state, action) => {
                       </ButtonGroup>
                     </Grid>
                     <Grid item xs>
-                      <Typography variant="body2" color="text.secondary" textAlign={'center'}>
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        textAlign={"center"}
+                      >
                         {item.product_price}
                       </Typography>
                     </Grid>
                     <Grid item>
-                      <IconButton aria-label="delete" size="small" onClick={() => removeItem(id)}>
+                      <IconButton
+                        aria-label="delete"
+                        size="small"
+                        onClick={() => removeItem(id)}
+                      >
                         <CloseOutlinedIcon fontSize="inherit" />
                       </IconButton>
                     </Grid>
@@ -223,7 +229,7 @@ const MyCart = (id, quantity, state, action) => {
           <Button
             size="medium"
             variant="contained"
-            sx={{float:"right", mt:2}}
+            sx={{ float: "right", mt: 2 }}
             color="error"
           >
             CheckOut Items

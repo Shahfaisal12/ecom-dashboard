@@ -8,10 +8,10 @@ const Layout = ({ children }) => {
   return (
     <div>
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={3} md={2}>
+        <Grid item xs={12} sm={12} md={2}>
           <Sidebar />
         </Grid>
-        <Grid item xs={12} sm={9} md={10}> 
+        <Grid item xs={12} sm={12} md={10}> 
           <Header />
           <main>{children}</main>
           <Footer />
