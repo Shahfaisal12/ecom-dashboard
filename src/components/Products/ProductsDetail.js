@@ -177,6 +177,7 @@ const ProductsDetail = () => {
           <TextField
           id="outlined-number-input"
           type="number"
+          size="small"
           autoComplete="current-number"
         />
           <Button variant="outlined">Add to Cart</Button>

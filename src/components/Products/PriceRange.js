@@ -3,14 +3,12 @@ import Slider from "@mui/material/Slider";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
-///Price range
+///Price Range
 
 function valuetext(value) {
   return `${value}°C`;
 }
 const minDistance = 10;
-
-//End Price range
 
 const PriceRange = () => {
   /// Price range

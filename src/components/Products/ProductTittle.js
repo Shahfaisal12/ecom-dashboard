@@ -4,7 +4,7 @@ import React from "react";
 const ProductTittle = () => {
   return (
     <Typography
-      variant="h5"
+      variant="h4"
       gutterBottom
       sx={{ textAlign: "center", fontWeight: "bold" }}
     >

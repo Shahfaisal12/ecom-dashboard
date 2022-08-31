@@ -22,8 +22,8 @@ function App() {
         <Route path="productdetail" element={<ProductsDetail />} />
         <Route path="mycart" element={<MyCart />} />
         <Route path="login" element={<Login />} />
-        <Route path="login" element={<Loginform />} />
-        <Route path="login" element={<Signupform />} />
+        <Route path="loginform" element={<Loginform />} />
+        <Route path="signupfrom" element={<Signupform />} />
         
       </Routes>
     </div>

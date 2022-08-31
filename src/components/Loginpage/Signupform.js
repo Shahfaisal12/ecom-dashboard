@@ -12,15 +12,17 @@ import {
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
+const paperStyle = {
+  padding: 20,
+  height: "74vh",
+  width: 280,
+  margin: "20px auto",
+};
+const btnstyle = { margin: "8px 0", background: "#1976d2", color: "#FFFFFF" };
+const linkstyle = { color: "#1976d2" };
+
 const Signupform = () => {
-  const paperStyle = {
-    padding: 20,
-    height: "74vh",
-    width: 280,
-    margin: "20px auto",
-  };
-  const btnstyle = { margin: "8px 0", background: "#1976d2", color: "#FFFFFF" };
-  const linkstyle = { color: "#1976d2" };
+
   return (
     <Grid>
       <Paper elevation={10} style={paperStyle}>
@@ -73,7 +75,7 @@ const Signupform = () => {
         </Button>
         <Typography>
           Do you have an account ?
-          <Link href="/login" primary style={linkstyle}>
+          <Link href="/loginform" primary style={linkstyle}>
             Signin Page
           </Link>
         </Typography>
