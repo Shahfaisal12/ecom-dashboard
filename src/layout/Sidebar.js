@@ -72,9 +72,14 @@ const Sidebar = () => {
       </ListItemButton>
       <Collapse in={openStore} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <Link to="/products" style={linkstyle}>
+        <Link to="/products" style={linkstyle}>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText primary="Products" />
+          </ListItemButton>
+        </Link>
+          <Link to="singleproductdetail" style={linkstyle}>
             <ListItemButton sx={{ pl: 4 }}>
-              <ListItemText primary="Products" />
+              <ListItemText primary="Single Product" />
             </ListItemButton>
           </Link>
           <Link to="/productdetail" style={linkstyle}>
@@ -85,11 +90,6 @@ const Sidebar = () => {
           <Link to="/mycart" style={linkstyle}>
             <ListItemButton sx={{ pl: 4 }} href="/mycart">
               <ListItemText primary="MyCart" />
-            </ListItemButton>
-          </Link>
-          <Link to="" style={linkstyle}>
-            <ListItemButton sx={{ pl: 4 }}>
-              <ListItemText primary="Orders" />
             </ListItemButton>
           </Link>
           <Link to="" style={linkstyle}>

@@ -9,9 +9,9 @@ import AddIcon from "@mui/icons-material/Add";
 import Fab from "@mui/material/Fab";
 
 import MenuIcon from "@mui/icons-material/Menu";
-import { Button } from "@mui/material";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import DataUsageOutlinedIcon from "@mui/icons-material/DataUsageOutlined";
+import AddShoppingCartSharpIcon from '@mui/icons-material/AddShoppingCartSharp';
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -30,19 +30,27 @@ const Header = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontWeight:'bold' }}>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, fontWeight: "bold" }}
+          >
             Orders
           </Typography>
-          <Button color="inherit">
+          <IconButton aria-label="Example" sx={{m: 1}}>
             <SearchOutlinedIcon />
-          </Button>
-          <Button color="inherit">
-            <DataUsageOutlinedIcon />
-          </Button>
-          <Button color="inherit">
-            <Avatar alt="Remy Sharp" src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg" sx={{ width: 24, height: 24 }} />
-          </Button>
-          <Fab size="small" color="primary" aria-label="add">
+          </IconButton>
+          <Link to="/mycart" >
+          <IconButton aria-label="Example" sx={{m: 1}}>
+            <AddShoppingCartSharpIcon />
+          </IconButton>
+          </Link>
+
+          <Avatar
+            alt="Remy Sharp"
+            src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg"
+            sx={{m: 2}}/>
+          <Fab size="small" color="primary" aria-label="add"  sx={{m: 1}}>
             <AddIcon />
           </Fab>
         </Toolbar>

@@ -1,13 +1,21 @@
-import { Box, Button, Grid, ImageList, ImageListItem, Stack, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Grid,
+  ImageList,
+  ImageListItem,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 import * as React from "react";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import { styled } from '@mui/material/styles';
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { styled } from "@mui/material/styles";
 
-//Image List
 const itemData = [
   {
     img: "../assets/image/subproduct/shoes1.jpg",
@@ -50,6 +58,7 @@ const itemData = [
   },
 ];
 
+//Image List
 function srcset(image, size, rows = 1, cols = 1) {
   return {
     src: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format`,
@@ -81,15 +90,15 @@ function getLabelText(value) {
 }
 // End Rating
 
-//Custom Rating
+//Custom Style Rating
 const StyledRating = styled(Rating)({
-    '& .MuiRating-iconFilled': {
-      color: '#ff6d75',
-    },
-  });
-  //End Custom Rating
+  "& .MuiRating-iconFilled": {
+    color: "#ff6d75",
+  },
+});
+//End Custom Rating
 
-    ///Main Function
+///Main Function
 const ProductsDetail = () => {
   //Rating
   const [value, setValue] = React.useState(2);
@@ -97,10 +106,16 @@ const ProductsDetail = () => {
   //end rating
 
   return (
-    <Grid container rowSpacing={1} sx={{mt:2, mb:5}} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+    <Grid
+      container
+      rowSpacing={1}
+      sx={{ mt: 2, mb: 5 }}
+      columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+    >
+      {/* Single product images */}
       <Grid item xs={12} sm={12} md={5} lg={6}>
         <ImageList
-          sx={{ width: 500,  }}
+          sx={{ width: 500 }}
           variant="quilted"
           cols={4}
           rowHeight={121}
@@ -120,6 +135,8 @@ const ProductsDetail = () => {
           ))}
         </ImageList>
       </Grid>
+
+      {/* Single product Details */}
       <Grid item xs={12} sm={12} md={7} lg={6}>
         <Box sx={{ width: "100%" }}>
           <Typography
@@ -166,7 +183,7 @@ const ProductsDetail = () => {
             )}
           </Box>
 
-          <Box sx={{ width: "100%", mt: 5, maxWidth:400 }}>
+          <Box sx={{ width: "100%", mt: 5, maxWidth: 400 }}>
             <Typography variant="p" gutterBottom>
               Quem tota utroque mea ea, nam blandit disputando te, sale volutpat
               pri in. Mutat eleifend per ut, has ut nusquam accumsan mnesarchum.
@@ -174,47 +191,54 @@ const ProductsDetail = () => {
               usu modus munere at eos.
             </Typography>
           </Box>
-          <Stack direction="row" spacing={2} sx={{alignItems:"center", mt:5}}>
-          <TextField
-          id="outlined-number-input"
-          type="number"
-          size="small"
-          autoComplete="current-number"
-        />
-          <Button variant="outlined">Add to Cart</Button>
-</Stack>
+          <Stack
+            direction="row"
+            spacing={2}
+            sx={{ alignItems: "center", mt: 5 }}
+          >
+            <TextField
+              id="outlined-number-input"
+              type="number"
+              size="small"
+              autoComplete="current-number"
+            />
+            <Button variant="outlined">Add to Cart</Button>
+          </Stack>
 
-<Box
+          <Box
             sx={{
               width: 500,
               display: "flex",
               alignItems: "center",
-              mt:5
+              mt: 5,
             }}
-            >
+          >
             <StyledRating
-            name="customized-color"
-            defaultValue={2}
-            getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
-            precision={0.5}
-            icon={<FavoriteIcon fontSize="inherit" />}
-            emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+              name="customized-color"
+              defaultValue={2}
+              getLabelText={(value) =>
+                `${value} Heart${value !== 1 ? "s" : ""}`
+              }
+              precision={0.5}
+              icon={<FavoriteIcon fontSize="inherit" />}
+              emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
             />
-            <Typography component="legend">The product is already in your wishlist!</Typography>
+            <Typography component="legend">
+              The product is already in your wishlist!
+            </Typography>
           </Box>
 
-          <Box sx={{ width: "100%", my: 5, maxWidth:400 }}>
-          <Typography variant="p" display="block" gutterBottom>
-          SKU: 061
-        </Typography>
-        <Typography variant="p" display="block" gutterBottom>
-        Category: Flour
-        </Typography>
-        <Typography variant="p" display="block" gutterBottom>
-        Tag: Cooking
-        
-        </Typography>
-        </Box>
+          <Box sx={{ width: "100%", my: 5, maxWidth: 400 }}>
+            <Typography variant="p" display="block" gutterBottom>
+              SKU: 061
+            </Typography>
+            <Typography variant="p" display="block" gutterBottom>
+              Category: Flour
+            </Typography>
+            <Typography variant="p" display="block" gutterBottom>
+              Tag: Cooking
+            </Typography>
+          </Box>
         </Box>
       </Grid>
     </Grid>
