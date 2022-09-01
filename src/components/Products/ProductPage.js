@@ -13,6 +13,9 @@ import { Grid } from "@mui/material";
 import BreadCrumb from "./BreadCrumb";
 import ProductTittle from "./ProductTittle";
 import PriceRange from "./PriceRange";
+import { Link } from "react-router-dom";
+
+const linkstyle = { textDecoration: "none", color: "#000000" };
 
 const ProductPage = (props) => {
   // Used Page Nevigation
@@ -120,7 +123,8 @@ const ProductPage = (props) => {
           .map((product) => (
             <Grid item xs={12} sm={6} md={4} lg={3} p={2}>
               <Card key={product.id} sx={{ maxWidth: 375 }} >
-                <CardActionArea href="/productsdetail">
+              <Link to="/productdetail" style={linkstyle}>
+                <CardActionArea>
                   <CardMedia
                     component="img"
                     height="200"
@@ -140,6 +144,7 @@ const ProductPage = (props) => {
                     </Typography>
                   </CardContent>
                 </CardActionArea>
+                </Link>
                 <CardActions sx={{ justifyContent: "center" }}>
                   <Typography
                     color="primary"
