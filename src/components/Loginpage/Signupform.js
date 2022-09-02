@@ -7,10 +7,13 @@ import {
   Button,
   Typography,
   Link,
+  Input,
 } from "@material-ui/core";
 // import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
+import { IconButton, InputAdornment } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
   const paperStyle = {
     padding: 20,
@@ -22,6 +25,31 @@ import Checkbox from "@material-ui/core/Checkbox";
   const linkstyle = { color: "#1976d2" };
 
 const Signupform = () => {
+
+   //Password Show Hide
+   const [values, setValues] = React.useState({
+    amount: '',
+    password: '',
+    weight: '',
+    weightRange: '',
+    showPassword: false,
+  });
+
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
+
+  const handleClickShowPassword = () => {
+    setValues({
+      ...values,
+      showPassword: !values.showPassword,
+    });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+    // End Password Show/hide
 
   return (
     <Grid>
@@ -55,13 +83,24 @@ const Signupform = () => {
             />
           </Grid>
           <Grid item xs={12}>
-            <TextField
-              label="Password"
-              placeholder="Enter password"
-              type="password"
-              fullWidth
-              required
-            />
+          <Input
+          fullWidth
+          required
+          id="standard-adornment-password"
+          type={values.showPassword ? 'text' : 'password'}
+          value={values.password}
+          onChange={handleChange('password')}
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+              >
+                {values.showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          }/>
           </Grid>
           <Grid item xs={12}>
             <FormControlLabel

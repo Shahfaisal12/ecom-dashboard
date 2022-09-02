@@ -92,9 +92,9 @@ const Sidebar = () => {
               <ListItemText primary="MyCart" />
             </ListItemButton>
           </Link>
-          <Link to="" style={linkstyle}>
+          <Link to="/checkout" style={linkstyle}>
             <ListItemButton sx={{ pl: 4 }}>
-              <ListItemText primary="Discounts" />
+              <ListItemText primary="CheckOut" />
             </ListItemButton>
           </Link>
           <Link to="" style={linkstyle}>

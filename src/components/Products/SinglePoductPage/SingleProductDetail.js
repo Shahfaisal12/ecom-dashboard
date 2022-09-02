@@ -1,5 +1,5 @@
 import React from 'react';
-import './SingleproductDetail.css';
+import './SingleProductDetail.css';
 import Colors from './Colors'
 import DetailsThumb from './DetailsThumb';
 import { Button, Typography } from '@mui/material';

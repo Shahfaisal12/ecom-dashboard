@@ -10,7 +10,7 @@ import LockOpenIcon from "@mui/icons-material/LockOpen";
 import LoginIcon from '@mui/icons-material/Login';
 
 const Login = () => {
-  const [value, setValue] = React.useState("2");
+  const [value, setValue] = React.useState("1");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
