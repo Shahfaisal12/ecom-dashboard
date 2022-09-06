@@ -4,7 +4,10 @@ import {
   AccordionSummary,
   Button,
   FormControl,
+  FormControlLabel,
   Grid,
+  Radio,
+  RadioGroup,
   Table,
   TableBody,
   TableCell,
@@ -44,22 +47,16 @@ TextMaskCustom.propTypes = {
 };
 // End Mask Function
 
-//order Table
-function createData(name, calories) {
-  return { name, calories };
-}
-
-const rows = [
-  createData("T-Shirt x 1", "$150"),
-  createData("Polo T-Shirt x 1", "$250"),
-  createData("Shoes x 1", "$350"),
-  createData("Subtotal", "$750"),
-  createData("Tax", "$35"),
-  createData("Total", "$785"),
-];
-// End order Table
-
+//Main Function
 const CheckOutPage = () => {
+  //Radio button
+  const [value, setValue] = React.useState("Cash on Delivery");
+
+  const handleChangeRadio = (event) => {
+    setValue(event.target.value);
+  };
+  //End Radio Button
+
   //Mask
   const [values, setValues] = React.useState({
     textmask: "(+92) 343-0000000",
@@ -75,27 +72,35 @@ const CheckOutPage = () => {
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={12} sm={12} md={8} sx={{ my: 5 }}>
+      <Grid item xs={12} sm={8} md={8} sx={{ my: 5 }}>
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography>Have a Coupon?</Typography>
+            <Typography variant="h6" color="error">
+              Have a Coupon?
+            </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <FormControl sx={{ m: 1 }} variant="standard">
-              <TextField
-                id="coupon_code"
-                label="Coupon Code"
-                type="text"
-                variant="standard"
-                fullWidth
-              />
-              <Button variant="contained" color="error" sx={{ mt: 5 }}>
-                Apply Coupon
-              </Button>
+            <FormControl sx={{ m: 1 }} variant="standard" fullWidth>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    id="coupon_code"
+                    label="Coupon Code"
+                    type="text"
+                    variant="standard"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <Button variant="contained" color="error" sx={{ mt: 5 }}>
+                    Apply Coupon
+                  </Button>
+                </Grid>
+              </Grid>
             </FormControl>
           </AccordionDetails>
         </Accordion>
@@ -105,9 +110,11 @@ const CheckOutPage = () => {
             aria-controls="panel2a-content"
             id="panel2a-header"
           >
-            <Typography>Shipping Address</Typography>
+            <Typography variant="h6" color="error">
+              Shipping Address
+            </Typography>
           </AccordionSummary>
-          <AccordionDetails>
+          <AccordionDetails sx={{ mb: 5 }}>
             <FormControl sx={{ m: 1 }} variant="standard">
               <Grid container spacing={2}>
                 <Grid item xs={6}>
@@ -218,31 +225,141 @@ const CheckOutPage = () => {
           </AccordionDetails>
         </Accordion>
       </Grid>
-      <Grid item xs={12} sm={12} md={4}  sx={{ my: 5 }}>
-        <TableContainer component={Paper} sx={{mr:2}}>
+      <Grid item xs={12} sm={4} md={4} sx={{ my: 5 }}>
+        <Typography variant="h6" color="error">
+          Order Summary
+        </Typography>
+        <TableContainer component={Paper} sx={{ mr: 2, mt: 1, maxWidth:'350px', display:'flex', m:'auto'  }}>
           <Table aria-label="simple table">
             <TableHead>
-              <TableRow sx={{ "td,th": { border: '1px solid rgba(224, 224, 224, 1)' } }}>
-                <TableCell sx={{fontWeight:'bold', fontSize:'18px'}}>Product</TableCell>
-                <TableCell align="right" sx={{fontWeight:'bold', fontSize:'18px'}}>Total</TableCell>
+              <TableRow
+                sx={{ "td,th": { border: "1px solid rgba(224, 224, 224, 1)" } }}
+              >
+                <TableCell sx={{ fontWeight: "bold", fontSize: "16px" }}>
+                  Product
+                </TableCell>
+                <TableCell
+                  align="right"
+                  sx={{ fontWeight: "bold", fontSize: "16px" }}
+                >
+                  Total
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => (
-                <TableRow
+              <TableRow
+                orientation="vertical"
+                sx={{
+                  "td,th": { border: "1px solid rgba(224, 224, 224, 1)" },
+                }}
+              >
+                <TableCell component="th" scope="row" orientation="vertical">
+                  T-Shirt x 1{" "}
+                </TableCell>
+                <TableCell align="right">$150</TableCell>
+              </TableRow>
+              <TableRow
+                orientation="vertical"
+                sx={{
+                  "td,th": { border: "1px solid rgba(224, 224, 224, 1)" },
+                }}
+              >
+                <TableCell component="th" scope="row" orientation="vertical">
+                  Polo T-Shirt x 1
+                </TableCell>
+                <TableCell align="right">$250</TableCell>
+              </TableRow>
+              <TableRow
+                orientation="vertical"
+                sx={{
+                  "td,th": { border: "1px solid rgba(224, 224, 224, 1)" },
+                }}
+              >
+                <TableCell component="th" scope="row" orientation="vertical">
+                  Shoes x 1
+                </TableCell>
+                <TableCell align="right">$350</TableCell>
+              </TableRow>
+              <TableRow
+                orientation="vertical"
+                sx={{
+                  "td,th": { border: "1px solid rgba(224, 224, 224, 1)" },
+                }}
+              >
+                <TableCell
+                  component="th"
+                  scope="row"
                   orientation="vertical"
-                  key={row.name}
-                  sx={{ "td,th": { border: '1px solid rgba(224, 224, 224, 1)' } }}
+                  sx={{ fontWeight: "bold", fontSize: "16px" }}
                 >
-                  <TableCell component="th" scope="row" orientation="vertical">
-                    {row.name}
-                  </TableCell>
-                  <TableCell align="right">{row.calories}</TableCell>
-                </TableRow>
-              ))}
+                  Subtotal
+                </TableCell>
+                <TableCell align="right">$750</TableCell>
+              </TableRow>
+              <TableRow
+                orientation="vertical"
+                sx={{
+                  "td,th": { border: "1px solid rgba(224, 224, 224, 1)" },
+                }}
+              >
+                <TableCell
+                  component="th"
+                  scope="row"
+                  orientation="vertical"
+                  sx={{ fontWeight: "bold", fontSize: "16px" }}
+                >
+                  Tax
+                </TableCell>
+                <TableCell align="right">$35</TableCell>
+              </TableRow>
+              <TableRow
+                orientation="vertical"
+                sx={{
+                  "td,th": { border: "1px solid rgba(224, 224, 224, 1)" },
+                }}
+              >
+                <TableCell
+                  component="th"
+                  scope="row"
+                  orientation="vertical"
+                  sx={{ fontWeight: "bold", fontSize: "16px" }}
+                >
+                  Total
+                </TableCell>
+                <TableCell align="right">$785</TableCell>
+              </TableRow>
             </TableBody>
           </Table>
         </TableContainer>
+        <Typography variant="h6" color="error" sx={{ mt: 3 }}>
+          Payment Method
+        </Typography>
+        <Paper sx={{ mt: 1, p: 2, maxWidth:'350px', display:'flex', m:'auto' }}>
+          <FormControl>
+            <RadioGroup
+              aria-labelledby="demo-controlled-radio-buttons-group"
+              name="controlled-radio-buttons-group"
+              value={value}
+              onChange={handleChangeRadio}
+            >
+              <FormControlLabel
+                value="Cash on Delivery"
+                control={<Radio />}
+                label="Cash on Delivery"
+              />
+              <FormControlLabel
+                value="Via Paypal"
+                control={<Radio />}
+                label="Via Paypal"
+              />
+            </RadioGroup>
+
+            <img src="../assets/image/paypal.jpg" alt="" style={{ width: '100%' }}/>
+              <Button variant="contained" color="error" sx={{ mt: 2 }}>
+                Place Order
+              </Button>
+          </FormControl>
+        </Paper>
       </Grid>
     </Grid>
   );
