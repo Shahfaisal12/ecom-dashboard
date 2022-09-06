@@ -1,30 +1,29 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import { alpha } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
-import TableSortLabel from '@mui/material/TableSortLabel';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
-import Checkbox from '@mui/material/Checkbox';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
-import DeleteIcon from '@mui/icons-material/Delete';
-import FilterListIcon from '@mui/icons-material/FilterList';
-import { visuallyHidden } from '@mui/utils';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
-import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
-
+import * as React from "react";
+import PropTypes from "prop-types";
+import { alpha } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TablePagination from "@mui/material/TablePagination";
+import TableRow from "@mui/material/TableRow";
+import TableSortLabel from "@mui/material/TableSortLabel";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
+import Checkbox from "@mui/material/Checkbox";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import DeleteIcon from "@mui/icons-material/Delete";
+import FilterListIcon from "@mui/icons-material/FilterList";
+import { visuallyHidden } from "@mui/utils";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import Avatar from "@mui/material/Avatar";
+import Stack from "@mui/material/Stack";
+import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 
 function createData(name, dates, status, customer, purchase, revenue, dot) {
   return {
@@ -39,20 +38,132 @@ function createData(name, dates, status, customer, purchase, revenue, dot) {
 }
 
 const rows = [
-  createData('#1019', '30 sep, 21:21', 'Paid', 'Athan Travis', 'Mastering The Grid', '$9.99', <MoreHorizIcon />),
-  createData('#1029', '30 sep, 21:21', 'Paid', 'Athan Travis', 'Mastering The Grid', '$9.99', <MoreHorizIcon />),
-  createData('#1298', '30 sep, 21:21', 'unpaid', 'Athan Travis', 'Mastering The Grid', '$9.99', <MoreHorizIcon />),
-  createData('#1208', 'Paid', 'Athan Travis', 'Athan Travis', 'Mastering The Grid', '$9.99', <MoreHorizIcon />),
-  createData('#1291', '30 sep, 21:21', 'Paid', 'Athan Travis', 'Mastering The Grid', '$9.99', <MoreHorizIcon />),
-  createData('#1222', '30 sep, 21:21', 'Paid', 'Athan Travis', 'Mastering The Grid', '$9.99', <MoreHorizIcon />),
-  createData('#2321', '30 sep, 21:21', 'unpaid', 'Athan Travis', 'Mastering The Grid', '$9.99', <MoreHorizIcon />),
-  createData('#2323', '30 sep, 21:21', 'Paid', 'Athan Travis', 'Mastering The Grid', '$9.99', <MoreHorizIcon />),
-  createData('#2324', '30 sep, 21:21', 'unpaid', 'Athan Travis', 'Mastering The Grid', '$9.99', <MoreHorizIcon />),
-  createData('#1354', '30 sep, 21:21', 'Paid', 'Athan Travis', 'Mastering The Grid', '$9.99', <MoreHorizIcon />),
-  createData('#6322', '30 sep, 21:21', 'Paid', 'Athan Travis', 'Mastering The Grid', '$9.99', <MoreHorizIcon />),
-  createData('#2345', '30 sep, 21:21', 'Paid', 'Athan Travis', 'Mastering The Grid', '$9.99', <MoreHorizIcon />),
-  createData('#2356', '30 sep, 21:21', 'Paid', 'Athan Travis', 'Mastering The Grid', '$9.99', <MoreHorizIcon />),
-  createData('#6789', '30 sep, 21:21', 'Paid', 'Athan Travis', 'Mastering The Grid', '$9.99', <MoreHorizIcon />),
+  createData(
+    "#1019",
+    "30 sep, 21:21",
+    "Paid",
+    "Athan Travis",
+    "Mastering The Grid",
+    "$9.99",
+    <MoreHorizIcon />
+  ),
+  createData(
+    "#1029",
+    "30 sep, 21:21",
+    "Paid",
+    "Athan Travis",
+    "Mastering The Grid",
+    "$9.99",
+    <MoreHorizIcon />
+  ),
+  createData(
+    "#1298",
+    "30 sep, 21:21",
+    "unpaid",
+    "Athan Travis",
+    "Mastering The Grid",
+    "$9.99",
+    <MoreHorizIcon />
+  ),
+  createData(
+    "#1208",
+    "Paid",
+    "Athan Travis",
+    "Athan Travis",
+    "Mastering The Grid",
+    "$9.99",
+    <MoreHorizIcon />
+  ),
+  createData(
+    "#1291",
+    "30 sep, 21:21",
+    "Paid",
+    "Athan Travis",
+    "Mastering The Grid",
+    "$9.99",
+    <MoreHorizIcon />
+  ),
+  createData(
+    "#1222",
+    "30 sep, 21:21",
+    "Paid",
+    "Athan Travis",
+    "Mastering The Grid",
+    "$9.99",
+    <MoreHorizIcon />
+  ),
+  createData(
+    "#2321",
+    "30 sep, 21:21",
+    "unpaid",
+    "Athan Travis",
+    "Mastering The Grid",
+    "$9.99",
+    <MoreHorizIcon />
+  ),
+  createData(
+    "#2323",
+    "30 sep, 21:21",
+    "Paid",
+    "Athan Travis",
+    "Mastering The Grid",
+    "$9.99",
+    <MoreHorizIcon />
+  ),
+  createData(
+    "#2324",
+    "30 sep, 21:21",
+    "unpaid",
+    "Athan Travis",
+    "Mastering The Grid",
+    "$9.99",
+    <MoreHorizIcon />
+  ),
+  createData(
+    "#1354",
+    "30 sep, 21:21",
+    "Paid",
+    "Athan Travis",
+    "Mastering The Grid",
+    "$9.99",
+    <MoreHorizIcon />
+  ),
+  createData(
+    "#6322",
+    "30 sep, 21:21",
+    "Paid",
+    "Athan Travis",
+    "Mastering The Grid",
+    "$9.99",
+    <MoreHorizIcon />
+  ),
+  createData(
+    "#2345",
+    "30 sep, 21:21",
+    "Paid",
+    "Athan Travis",
+    "Mastering The Grid",
+    "$9.99",
+    <MoreHorizIcon />
+  ),
+  createData(
+    "#2356",
+    "30 sep, 21:21",
+    "Paid",
+    "Athan Travis",
+    "Mastering The Grid",
+    "$9.99",
+    <MoreHorizIcon />
+  ),
+  createData(
+    "#6789",
+    "30 sep, 21:21",
+    "Paid",
+    "Athan Travis",
+    "Mastering The Grid",
+    "$9.99",
+    <MoreHorizIcon />
+  ),
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -66,7 +177,7 @@ function descendingComparator(a, b, orderBy) {
 }
 
 function getComparator(order, orderBy) {
-  return order === 'desc'
+  return order === "desc"
     ? (a, b) => descendingComparator(a, b, orderBy)
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
@@ -87,58 +198,64 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: 'name',
+    id: "name",
     numeric: false,
     disablePadding: true,
-    label: '#',
+    label: "#",
   },
   {
-    id: 'dates',
+    id: "dates",
     numeric: true,
     disablePadding: false,
-    label: 'Date',
+    label: "Date",
   },
   {
-    id: 'status',
+    id: "status",
     numeric: true,
     disablePadding: false,
-    label: 'Status',
+    label: "Status",
   },
   {
-    id: 'customer',
+    id: "customer",
     numeric: true,
     disablePadding: false,
-    label: 'Customer',
+    label: "Customer",
   },
   {
-    id: 'purchase',
+    id: "purchase",
     numeric: true,
     disablePadding: false,
-    label: 'Purchased',
+    label: "Purchased",
   },
   {
-    id: 'revenue',
+    id: "revenue",
     numeric: true,
     disablePadding: false,
-    label: 'Revenue',
+    label: "Revenue",
   },
   {
-    id: 'dot',
+    id: "dot",
     numeric: true,
     disablePadding: false,
-    label: '',
+    label: "",
   },
 ];
 
 function EnhancedTableHead(props) {
-  const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } =
-    props;
+  const {
+    onSelectAllClick,
+    order,
+    orderBy,
+    numSelected,
+    rowCount,
+    onRequestSort,
+  } = props;
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };
 
   return (
-    <TableHead sx={{background:'#F7F7F8'}}>
+    <TableHead sx={{ background: "#F7F7F8" }}>
       <TableRow>
         <TableCell padding="checkbox">
           <Checkbox
@@ -147,26 +264,26 @@ function EnhancedTableHead(props) {
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
             inputProps={{
-              'aria-label': 'select all desserts',
+              "aria-label": "select all desserts",
             }}
           />
         </TableCell>
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? 'center' : 'left'}
-            padding={headCell.disablePadding ? 'none' : 'normal'}
+            align={headCell.numeric ? "center" : "left"}
+            padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
             <TableSortLabel
               active={orderBy === headCell.id}
-              direction={orderBy === headCell.id ? order : 'asc'}
+              direction={orderBy === headCell.id ? order : "asc"}
               onClick={createSortHandler(headCell.id)}
             >
               {headCell.label}
               {orderBy === headCell.id ? (
                 <Box component="span" sx={visuallyHidden}>
-                  {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                  {order === "desc" ? "sorted descending" : "sorted ascending"}
                 </Box>
               ) : null}
             </TableSortLabel>
@@ -181,7 +298,7 @@ EnhancedTableHead.propTypes = {
   numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
   onSelectAllClick: PropTypes.func.isRequired,
-  order: PropTypes.oneOf(['asc', 'desc']).isRequired,
+  order: PropTypes.oneOf(["asc", "desc"]).isRequired,
   orderBy: PropTypes.string.isRequired,
   rowCount: PropTypes.number.isRequired,
 };
@@ -196,13 +313,16 @@ const EnhancedTableToolbar = (props) => {
         pr: { xs: 1, sm: 1 },
         ...(numSelected > 0 && {
           bgcolor: (theme) =>
-            alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),
+            alpha(
+              theme.palette.primary.main,
+              theme.palette.action.activatedOpacity
+            ),
         }),
       }}
     >
       {numSelected > 0 ? (
         <Typography
-          sx={{ flex: '1 1 100%' }}
+          sx={{ flex: "1 1 100%" }}
           color="inherit"
           variant="subtitle1"
           component="div"
@@ -211,7 +331,7 @@ const EnhancedTableToolbar = (props) => {
         </Typography>
       ) : (
         <Typography
-          sx={{ flex: '1 1 100%' }}
+          sx={{ flex: "1 1 100%" }}
           variant="h6"
           id="tableTitle"
           component="div"
@@ -242,37 +362,45 @@ EnhancedTableToolbar.propTypes = {
 };
 
 export default function EnhancedTable() {
-  const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('dates');
+  const [order, setOrder] = React.useState("asc");
+  const [orderBy, setOrderBy] = React.useState("dates");
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const handleRequestSort = (event, property) => {
-    const isAsc = orderBy === property && order === 'asc';
-    setOrder(isAsc ? 'desc' : 'asc');
+    const isAsc = orderBy === property && order === "asc";
+    setOrder(isAsc ? "desc" : "asc");
     setOrderBy(property);
   };
 
-  const iconChangeHandler = (status)=>{
+  const iconChangeHandler = (status) => {
     // console.log(status)
 
-    const  data = {
+    const data = {
       Paid: {
-        value: 'paid',
-        color:'green',
-        
+        value: "paid",
+        color: "green",
       },
-      'unpaid':{
-        value: 'unpaid',
-        color:'red',
+      unpaid: {
+        value: "unpaid",
+        color: "red",
       },
-    }
+    };
 
-    const {value, color} = data[status];
+    const { value, color } = data[status];
 
-    return (<div style={{color:`${color}`, display:'flex'}} >{status === 'Paid' ?<CheckCircleOutlineIcon/> : <CancelOutlinedIcon/>  } <span style={{marginLeft:'5px'}}>{value}</span></div>)
-  }
+    return (
+      <div style={{ color: `${color}`, display: "flex" }}>
+        {status === "Paid" ? (
+          <CheckCircleOutlineIcon />
+        ) : (
+          <CancelOutlinedIcon />
+        )}{" "}
+        <span style={{ marginLeft: "5px" }}>{value}</span>
+      </div>
+    );
+  };
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
@@ -296,7 +424,7 @@ export default function EnhancedTable() {
     } else if (selectedIndex > 0) {
       newSelected = newSelected.concat(
         selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
+        selected.slice(selectedIndex + 1)
       );
     }
 
@@ -312,8 +440,6 @@ export default function EnhancedTable() {
     setPage(0);
   };
 
-  
-
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
   // Avoid a layout jump when reaching the last page with empty rows.
@@ -321,15 +447,11 @@ export default function EnhancedTable() {
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
   return (
-    <Box sx={{ width: '100%'}}>
-      <Paper sx={{ width: '100%', mb: 2 }}>
+    <Box sx={{ width: "100%" }}>
+      <Paper sx={{ width: "100%", mb: 2 }}>
         <EnhancedTableToolbar numSelected={selected.length} />
         <TableContainer>
-          <Table
-            sx={{ minWidth: 750 }}
-            aria-labelledby="tableTitle"
-            
-          >
+          <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
             <EnhancedTableHead
               numSelected={selected.length}
               order={order}
@@ -362,7 +484,7 @@ export default function EnhancedTable() {
                           color="primary"
                           checked={isItemSelected}
                           inputProps={{
-                            'aria-labelledby': labelId,
+                            "aria-labelledby": labelId,
                           }}
                         />
                       </TableCell>
@@ -375,12 +497,19 @@ export default function EnhancedTable() {
                         {row.name}
                       </TableCell>
                       <TableCell align="right">{row.dates}</TableCell>
-                      <TableCell align="right">{iconChangeHandler(row.status)} </TableCell>
-                      <TableCell align="right"><Stack direction="row" spacing={3}><Avatar
-                      alt="Remy Sharp"
-                      src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg"
-                      sx={{ width: 20, height: 20, marginRight:'5px' }}
-                    /> {row.customer} </Stack></TableCell>
+                      <TableCell align="right">
+                        {iconChangeHandler(row.status)}{" "}
+                      </TableCell>
+                      <TableCell align="right">
+                        <Stack direction="row" spacing={3}>
+                          <Avatar
+                            alt="Remy Sharp"
+                            src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg"
+                            sx={{ width: 20, height: 20, marginRight: "5px" }}
+                          />
+                          {row.customer}{" "}
+                        </Stack>
+                      </TableCell>
                       <TableCell align="right">{row.purchase}</TableCell>
                       <TableCell align="right">{row.revenue}</TableCell>
                       <TableCell align="right">{row.dot}</TableCell>
@@ -388,8 +517,7 @@ export default function EnhancedTable() {
                   );
                 })}
               {emptyRows > 0 && (
-                <TableRow
-                >
+                <TableRow>
                   <TableCell colSpan={6} />
                 </TableRow>
               )}

@@ -24,7 +24,7 @@ import { IMaskInput } from "react-imask";
 import Input from "@mui/material/Input";
 import Paper from "@mui/material/Paper";
 
-//Mask Function
+//    ********************************** Mask Function ***************************************************
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
   const { onChange, ...other } = props;
   return (
@@ -45,19 +45,20 @@ TextMaskCustom.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
-// End Mask Function
+//    ********************************** End Mask Function ***************************************************
 
-//Main Function
+//    ********************************** Main Function ***************************************************
 const CheckOutPage = () => {
-  //Radio button
+  //    ********************************** Radio button ***************************************************
   const [value, setValue] = React.useState("Cash on Delivery");
 
   const handleChangeRadio = (event) => {
     setValue(event.target.value);
   };
-  //End Radio Button
 
-  //Mask
+  //    ********************************** End Radio Button ***************************************************
+
+  //    ********************************** Mask input ***************************************************
   const [values, setValues] = React.useState({
     textmask: "(+92) 343-0000000",
   });
@@ -68,7 +69,7 @@ const CheckOutPage = () => {
       [event.target.name]: event.target.value,
     });
   };
-  //End mask
+  //    ********************************** End mask ***************************************************
 
   return (
     <Grid container spacing={2}>
@@ -229,7 +230,10 @@ const CheckOutPage = () => {
         <Typography variant="h6" color="error">
           Order Summary
         </Typography>
-        <TableContainer component={Paper} sx={{ mr: 2, mt: 1, maxWidth:'350px', display:'flex', m:'auto'  }}>
+        <TableContainer
+          component={Paper}
+          sx={{ mr: 2, mt: 1, maxWidth: "350px", display: "flex", m: "auto" }}
+        >
           <Table aria-label="simple table">
             <TableHead>
               <TableRow
@@ -334,7 +338,9 @@ const CheckOutPage = () => {
         <Typography variant="h6" color="error" sx={{ mt: 3 }}>
           Payment Method
         </Typography>
-        <Paper sx={{ mt: 1, p: 2, maxWidth:'350px', display:'flex', m:'auto' }}>
+        <Paper
+          sx={{ mt: 1, p: 2, maxWidth: "350px", display: "flex", m: "auto" }}
+        >
           <FormControl>
             <RadioGroup
               aria-labelledby="demo-controlled-radio-buttons-group"
@@ -354,10 +360,14 @@ const CheckOutPage = () => {
               />
             </RadioGroup>
 
-            <img src="../assets/image/paypal.jpg" alt="" style={{ width: '100%' }}/>
-              <Button variant="contained" color="error" sx={{ mt: 2 }}>
-                Place Order
-              </Button>
+            <img
+              src="../assets/image/paypal.jpg"
+              alt=""
+              style={{ width: "100%" }}
+            />
+            <Button variant="contained" color="error" sx={{ mt: 2 }}>
+              Place Order
+            </Button>
           </FormControl>
         </Paper>
       </Grid>

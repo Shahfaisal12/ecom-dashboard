@@ -9,41 +9,27 @@ import {
   Link,
   Input,
 } from "@material-ui/core";
-// import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import InputAdornment from "@mui/material/InputAdornment";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { IconButton } from "@mui/material";
 
+//   ********************************** Style **************************************************
 const paperStyle = {
   padding: 20,
-  height: "62vh",
-  width: 280,
+  width: 300,
   margin: "20px auto",
 };
 const btnstyle = { margin: "8px 0", background: "#1976d2", color: "#FFFFFF" };
 const linkstyle = { color: "#1976d2" };
 
+//   ********************************** Main Function **************************************************
 const Loginform = () => {
-  //Password Show Hide
-  // const [values, setValues] = React.useState({
-  //   amount: '',
-  //   password: '',
-  //   weight: '',
-  //   weightRange: '',
-  //   showPassword: false,
-  // });
-
-  // const handleChange = (prop) => (event) => {
-  //   setValues({ ...values, [prop]: event.target.value });
-  // };
-  const initialValues = { username: "", password: "", showPassword: false };
+  //   USe states
+  const initialValues = { username: "", email: "", password: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
 
+  //   ********************************** Form Validations ***************************************************
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
@@ -60,49 +46,39 @@ const Loginform = () => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(formValues);
     }
-  }, [formErrors]);
+  });
   const validate = (values) => {
     const errors = {};
-    // const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
+    //    ********************************** username Validation ***************************************************
     if (!values.username) {
       errors.username = "Username is required!";
     }
-    // if (!values.email) {
-    //   errors.email = "Email is required!";
-    // } else if (!regex.test(values.email)) {
-    //   errors.email = "This is not a valid email format!";
-    // }
+
+    //    ********************************** Password Validation ***************************************************
+    const passwordRegex = /(?=.*[0-9])/;
     if (!values.password) {
-      errors.password = "Password is required";
-    } else if (values.password.length < 4) {
-      errors.password = "Password must be more than 4 characters";
-    } else if (values.password.length > 10) {
-      errors.password = "Password cannot exceed more than 10 characters";
+      errors.password = "Required";
+    } else if (values.password.length < 8) {
+      errors.password = "Password must be 8 characters long.";
+    } else if (!passwordRegex.test(values.password)) {
+      errors.password = "Invalid password. Must contain one number.";
     }
     return errors;
   };
+  //    ********************************** End form Validation ***************************************************
 
-  const handleClickShowPassword = () => {
-    setFormValues({
-      ...formValues,
-      showPassword: !formValues.showPassword,
-    });
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-  // End Password Show/hide
   return (
     <>
-      {Object.keys(formErrors).length === 0 && isSubmit ? (
-        <div className="ui message success">Signed in successfully</div>
-      ) : (
-        <pre>{JSON.stringify(formValues, undefined, 2)}</pre>
-      )}
+      {
+        Object.keys(formErrors).length === 0 && isSubmit
+          ? alert("Signed in successfully")
+          : ""
+        //  ( <pre>{JSON.stringify(formValues, undefined, 2)}</pre> )
+      }
       <Paper elevation={10} style={paperStyle}>
         <Grid align="center">
-          <Avatar src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg"></Avatar>
+          <Avatar src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg" />
           <h2>Sign In</h2>
         </Grid>
         <form onSubmit={handleSubmit}>
@@ -110,39 +86,34 @@ const Loginform = () => {
             <Grid item xs={12}>
               <TextField
                 label="Username"
-                placeholder="Enter username"
+                type="text"
+                placeholder="Enter User Name"
                 fullWidth
                 name="username"
-                value={formValues.username}
                 onChange={handleChange}
+                value={formValues.username}
               />
-              <p>{formErrors.username}</p>
+              <Typography color="error" variant="caption">
+                {formErrors.username}{" "}
+              </Typography>
             </Grid>
             <Grid item xs={12}>
               <Input
                 fullWidth
-                name="password"
                 id="standard-adornment-password"
-                type={formValues.showPassword ? "text" : "password"}
+                type="password"
                 value={formValues.password}
-                onChange={handleChange("password")}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                    >
-                      {formValues.showPassword ? (
-                        <VisibilityOff />
-                      ) : (
-                        <Visibility />
-                      )}
-                    </IconButton>
-                  </InputAdornment>
-                }
+                onChange={handleChange}
+                name="password"
+                placeholder="Password"
               />
-              <p>{formErrors.password}</p>
+              <Typography
+                color="error"
+                variant="caption"
+                style={{ lineHeight: "19px" }}
+              >
+                {formErrors.password}{" "}
+              </Typography>
             </Grid>
           </Grid>
           <FormControlLabel
@@ -158,9 +129,9 @@ const Loginform = () => {
             Forgot password ?
           </Link>
         </Typography>
-        <Typography>
+        <Typography style={{ paddingBottom: "40px" }}>
           Do you have an account ?
-          <Link href="/signupfrom" primary style={linkstyle}>
+          <Link href="/signupfrom" style={linkstyle}>
             Sign Up
           </Link>
         </Typography>
