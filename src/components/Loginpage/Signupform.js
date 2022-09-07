@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Grid,
   Paper,
@@ -8,11 +8,14 @@ import {
   Typography,
   Link,
   Input,
+  InputAdornment,
+  IconButton,
 } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import { useFormik } from "formik";
 import { signUpSchema } from "./schemas";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 
 
@@ -37,7 +40,27 @@ const initialValues = {
   //   ********************************** Main Function***************************************************
 const Signupform = () => {
 
+  const [showPassword, setShowPassword] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState(false);
 
+  const handleShowPassword = () => {
+    if(showPassword === false){
+      setShowPassword(true)
+    }else{
+      setShowPassword(false)
+    }
+  }
+ const handleConfirmPassword = () => {
+  if(confirmPassword === true){
+    setConfirmPassword(false)
+  }else{
+    setConfirmPassword(true)
+  }
+
+ }
+ const handleMouseDownPassword = (event) => {
+  event.preventDefault();
+};
   //   ********************************** Form Validations Using Formik ***************************************************
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
   useFormik({
@@ -51,10 +74,17 @@ const Signupform = () => {
       action.resetForm();
     },
   });
+  console.log(values)
 console.log(
   "🚀 ~ file: Registration.jsx ~ line 25 ~ Registration ~ errors",
   errors
 );
+
+
+    
+  //   ********************************** Shopw Password***************************************************
+
+
 
   //   ********************************** Return HTML Page ***************************************************
   return (
@@ -117,12 +147,22 @@ console.log(
             <Input 
             fullWidth 
             name="password" 
-            type="password"
+            type={showPassword ? 'text': 'password' }
             placeholder="Enter Password"
             autoComplete="on"
             value={values.password}
             onChange={handleChange}
             onBlur={handleBlur} 
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                >
+                  {!showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>}
             />
             {errors.password && touched.password ? (
               <Typography color="error" variant="caption">{errors.password}</Typography>
@@ -132,12 +172,21 @@ console.log(
             <Input 
             fullWidth 
             name="confirmPassword" 
-            type="password"
-            placeholder="Enter Password"
+            type={confirmPassword ? 'text': 'password' }
+            placeholder="Confirm Password"
             autoComplete="on"
             value={values.confirmPassword}
             onChange={handleChange}
             onBlur={handleBlur} 
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleConfirmPassword}
+                >
+                  {!confirmPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>}
             />
             {errors.confirmPassword && touched.confirmPassword ? (
               <Typography color="error" variant="caption">{errors.confirmPassword}</Typography>

@@ -11,6 +11,9 @@ import {
 } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
+import { IconButton, InputAdornment } from "@mui/material";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 //   ********************************** Style **************************************************
 const paperStyle = {
@@ -24,14 +27,34 @@ const linkstyle = { color: "#1976d2" };
 //   ********************************** Main Function **************************************************
 const Loginform = () => {
   //   USe states
-  const initialValues = { username: "", email: "", password: "" };
+  const initialValues = {
+    username: "",
+    email: "",
+    password: "",
+    showPassword: false,
+  };
   const [formValues, setFormValues] = useState(initialValues);
+  console.log(formValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+
+  //   ********************************** Shopw Password***************************************************
+
+  const handleClickShowPassword = () => {
+    setFormValues({
+      ...formValues,
+      showPassword: !formValues.showPassword,
+    });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   //   ********************************** Form Validations ***************************************************
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(e.target);
     setFormValues({ ...formValues, [name]: value });
   };
 
@@ -101,11 +124,26 @@ const Loginform = () => {
               <Input
                 fullWidth
                 id="standard-adornment-password"
-                type="password"
+                type={formValues.showPassword ? "text" : "password"}
                 value={formValues.password}
                 onChange={handleChange}
                 name="password"
                 placeholder="Password"
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                    >
+                      {formValues.showPassword ? (
+                        <VisibilityOff />
+                      ) : (
+                        <Visibility />
+                      )}
+                    </IconButton>
+                  </InputAdornment>
+                }
               />
               <Typography
                 color="error"

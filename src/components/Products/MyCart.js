@@ -104,6 +104,15 @@ const MyCart = (id, quantity, state, action) => {
 
   return (
     <>
+    <div style={{ width: "100%", background: "#F1F1F1" }}>
+ <Typography
+   variant="h5"
+   align="center"
+   sx={{ fontWeight: "bold", mb: 2, py: 1 }}
+ >
+   My Cart
+ </Typography>
+</div>
       <BreadCrumb />
 
       <Grid container spacing={3} sx={{ pr: 2, mb: 5, mt: 2 }}>

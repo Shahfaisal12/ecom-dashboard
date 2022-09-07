@@ -4,14 +4,12 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import {
-  Box,
   CardActionArea,
   CardActions,
   TablePagination,
 } from "@mui/material";
 import { Grid } from "@mui/material";
 import BreadCrumb from "./BreadCrumb";
-import ProductTittle from "./ProductTittle";
 import PriceRange from "./PriceRange";
 import { Link } from "react-router-dom";
 
@@ -113,9 +111,16 @@ const ProductPage = (props) => {
   return (
     <div>
       {/* Product Title Component */}
-      <Box sx={{ width: "100%", marginBottom: "20px" }}>
-        <ProductTittle />
-      </Box>
+      
+      <div style={{ width: "100%", background: "#F1F1F1" }}>
+        <Typography
+          variant="h5"
+          align="center"
+          sx={{ fontWeight: "bold", mb: 2, py: 1 }}
+        >
+          Shop
+        </Typography>
+      </div>
 
       {/* BreadCrumb menu Component */}
       <BreadCrumb />

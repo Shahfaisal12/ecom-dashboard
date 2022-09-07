@@ -97,9 +97,14 @@ const Sidebar = () => {
               <ListItemText primary="CheckOut" />
             </ListItemButton>
           </Link>
-          <Link to="" style={linkstyle}>
+          <Link to="/orders" style={linkstyle}>
             <ListItemButton sx={{ pl: 4 }}>
-              <ListItemText primary="Affiliates" />
+              <ListItemText primary="Orders" />
+            </ListItemButton>
+          </Link>
+          <Link to="/orderdetail" style={linkstyle}>
+            <ListItemButton sx={{ pl: 4 }}>
+              <ListItemText primary="Order Detail Page" />
             </ListItemButton>
           </Link>
         </List>
@@ -110,9 +115,9 @@ const Sidebar = () => {
       </ListItemButton>
       <Collapse in={openComms} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <Link to="" style={linkstyle}>
+          <Link to="/pagenotfound" style={linkstyle}>
             <ListItemButton sx={{ pl: 4 }}>
-              <ListItemText primary="Comm1" />
+              <ListItemText primary="Page Not Found" />
             </ListItemButton>
           </Link>
           <Link to="" style={linkstyle}>

@@ -10,6 +10,9 @@ import Loginform from "./components/Loginpage/Loginform";
 import Signupform from "./components/Loginpage/Signupform";
 import SingleProductDetail from "./components/Products/SinglePoductPage/SingleProductDetail";
 import CheckOutPage from "./components/Products/CheckOutPage";
+import Orders from "./components/Userdashboard/Orders";
+import OrderDetail from "./components/Userdashboard/OrderDetail";
+import PageNotFound from "./components/Pagenotfound/PageNotFound";
 
 // import Form from "./components/Form";
 // import Tooglebutton from "./components/Tooglebutton";
@@ -28,7 +31,9 @@ function App() {
         <Route path="/signupfrom" element={<Signupform />} />
         <Route path="/singleproductdetail" element={<SingleProductDetail />} />
         <Route path="/checkout" element={<CheckOutPage />} />
-        
+        <Route path="/orders" element={<Orders />} />
+        <Route path="/orderdetail" element={<OrderDetail />} />
+        <Route path="/pagenotfound" element={<PageNotFound />} />
       </Routes>
     </div>
   );

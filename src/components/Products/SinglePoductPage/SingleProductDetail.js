@@ -49,6 +49,17 @@ class SingleProductDetail extends React.Component{
   render(){
     const {products, index} = this.state;
     return(
+      
+<>
+<div style={{ width: "100%", background: "#F1F1F1" }}>
+<Typography
+  variant="h5"
+  align="center"
+  sx={{ fontWeight: "bold", mb: 2, py: 1 }}
+>
+  Product Detail
+</Typography>
+</div>
       <div className="app">
         {
           products.map(item =>(
@@ -84,6 +95,7 @@ class SingleProductDetail extends React.Component{
           ))
         }
       </div>
+</>
     );
   };
 }

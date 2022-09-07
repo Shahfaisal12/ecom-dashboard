@@ -106,142 +106,155 @@ const ProductsDetail = () => {
   //end rating
 
   return (
-    <Grid
-      container
-      rowSpacing={1}
-      sx={{ mt: 2, mb: 5 }}
-      columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-    >
-      {/* Single product images */}
-      <Grid item xs={12} sm={12} md={5} lg={6}>
-        <ImageList
-          sx={{ width: 500 }}
-          variant="quilted"
-          cols={4}
-          rowHeight={121}
-        >
-          {itemData.map((item) => (
-            <ImageListItem
-              key={item.img}
-              cols={item.cols || 1}
-              rows={item.rows || 1}
-            >
-              <img
-                {...srcset(item.img, 121, item.rows, item.cols)}
-                alt={item.title}
-                loading="lazy"
-              />
-            </ImageListItem>
-          ))}
-        </ImageList>
-      </Grid>
+    
+<>
+<div style={{ width: "100%", background: "#F1F1F1" }}>
+<Typography
+  variant="h5"
+  align="center"
+  sx={{ fontWeight: "bold", mb: 2, py: 1 }}
+>
+  Product Detail
+</Typography>
+</div>
 
-      {/* Single product Details */}
-      <Grid item xs={12} sm={12} md={7} lg={6}>
-        <Box sx={{ width: "100%" }}>
-          <Typography
-            variant="h4"
-            sx={{ fontWeight: "bold" }}
-            display="block"
-            gutterBottom
-          >
-            Shoes
-          </Typography>
-          <Typography
-            variant="h6"
-            sx={{ fontWeight: "bold" }}
-            display="block"
-            gutterBottom
-          >
-            $25.00
-          </Typography>
+   <Grid
+     container
+     rowSpacing={1}
+     sx={{ mt: 2, mb: 5 }}
+     columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+   >
+     {/* Single product images */}
+     <Grid item xs={12} sm={12} md={5} lg={6}>
+       <ImageList
+         sx={{ width: 500 }}
+         variant="quilted"
+         cols={4}
+         rowHeight={121}
+       >
+         {itemData.map((item) => (
+           <ImageListItem
+             key={item.img}
+             cols={item.cols || 1}
+             rows={item.rows || 1}
+           >
+             <img
+               {...srcset(item.img, 121, item.rows, item.cols)}
+               alt={item.title}
+               loading="lazy"
+             />
+           </ImageListItem>
+         ))}
+       </ImageList>
+     </Grid>
 
-          <Box
-            sx={{
-              width: 200,
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <Rating
-              name="hover-feedback"
-              value={value}
-              precision={0.5}
-              getLabelText={getLabelText}
-              onChange={(event, newValue) => {
-                setValue(newValue);
-              }}
-              onChangeActive={(event, newHover) => {
-                setHover(newHover);
-              }}
-              emptyIcon={
-                <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
-              }
-            />
-            {value !== null && (
-              <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
-            )}
-          </Box>
+     {/* Single product Details */}
+     <Grid item xs={12} sm={12} md={7} lg={6}>
+       <Box sx={{ width: "100%" }}>
+         <Typography
+           variant="h4"
+           sx={{ fontWeight: "bold" }}
+           display="block"
+           gutterBottom
+         >
+           Shoes
+         </Typography>
+         <Typography
+           variant="h6"
+           sx={{ fontWeight: "bold" }}
+           display="block"
+           gutterBottom
+         >
+           $25.00
+         </Typography>
 
-          <Box sx={{ width: "100%", mt: 5, maxWidth: 400 }}>
-            <Typography variant="p" gutterBottom>
-              Quem tota utroque mea ea, nam blandit disputando te, sale volutpat
-              pri in. Mutat eleifend per ut, has ut nusquam accumsan mnesarchum.
-              Solum reque signiferumque ius ea. In primis eripuit menandri his,
-              usu modus munere at eos.
-            </Typography>
-          </Box>
-          <Stack
-            direction="row"
-            spacing={2}
-            sx={{ alignItems: "center", mt: 5 }}
-          >
-            <TextField
-              id="outlined-number-input"
-              type="number"
-              size="small"
-              autoComplete="current-number"
-            />
-            <Button variant="outlined">Add to Cart</Button>
-          </Stack>
+         <Box
+           sx={{
+             width: 200,
+             display: "flex",
+             alignItems: "center",
+           }}
+         >
+           <Rating
+             name="hover-feedback"
+             value={value}
+             precision={0.5}
+             getLabelText={getLabelText}
+             onChange={(event, newValue) => {
+               setValue(newValue);
+             }}
+             onChangeActive={(event, newHover) => {
+               setHover(newHover);
+             }}
+             emptyIcon={
+               <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
+             }
+           />
+           {value !== null && (
+             <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
+           )}
+         </Box>
 
-          <Box
-            sx={{
-              width: 500,
-              display: "flex",
-              alignItems: "center",
-              mt: 5,
-            }}
-          >
-            <StyledRating
-              name="customized-color"
-              defaultValue={2}
-              getLabelText={(value) =>
-                `${value} Heart${value !== 1 ? "s" : ""}`
-              }
-              precision={0.5}
-              icon={<FavoriteIcon fontSize="inherit" />}
-              emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
-            />
-            <Typography component="legend">
-              The product is already in your wishlist!
-            </Typography>
-          </Box>
+         <Box sx={{ width: "100%", mt: 5, maxWidth: 400 }}>
+           <Typography variant="p" gutterBottom>
+             Quem tota utroque mea ea, nam blandit disputando te, sale volutpat
+             pri in. Mutat eleifend per ut, has ut nusquam accumsan mnesarchum.
+             Solum reque signiferumque ius ea. In primis eripuit menandri his,
+             usu modus munere at eos.
+           </Typography>
+         </Box>
+         <Stack
+           direction="row"
+           spacing={2}
+           sx={{ alignItems: "center", mt: 5 }}
+         >
+           <TextField
+             id="outlined-number-input"
+             type="number"
+             size="small"
+             autoComplete="current-number"
+           />
+           <Button variant="outlined">Add to Cart</Button>
+         </Stack>
 
-          <Box sx={{ width: "100%", my: 5, maxWidth: 400 }}>
-            <Typography variant="p" display="block" gutterBottom>
-              SKU: 061
-            </Typography>
-            <Typography variant="p" display="block" gutterBottom>
-              Category: Flour
-            </Typography>
-            <Typography variant="p" display="block" gutterBottom>
-              Tag: Cooking
-            </Typography>
-          </Box>
-        </Box>
-      </Grid>
-    </Grid>
+         <Box
+           sx={{
+             width: 500,
+             display: "flex",
+             alignItems: "center",
+             mt: 5,
+           }}
+         >
+           <StyledRating
+             name="customized-color"
+             defaultValue={2}
+             getLabelText={(value) =>
+               `${value} Heart${value !== 1 ? "s" : ""}`
+             }
+             precision={0.5}
+             icon={<FavoriteIcon fontSize="inherit" />}
+             emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+           />
+           <Typography component="legend">
+             The product is already in your wishlist!
+           </Typography>
+         </Box>
+
+         <Box sx={{ width: "100%", my: 5, maxWidth: 400 }}>
+           <Typography variant="p" display="block" gutterBottom>
+             SKU: 061
+           </Typography>
+           <Typography variant="p" display="block" gutterBottom>
+             Category: Flour
+           </Typography>
+           <Typography variant="p" display="block" gutterBottom>
+             Tag: Cooking
+           </Typography>
+         </Box>
+       </Box>
+     </Grid>
+   </Grid>
+</>
   );
 };
 
