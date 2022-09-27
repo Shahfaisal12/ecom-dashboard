@@ -489,7 +489,7 @@ const Orders = () => {
  <>
  <div style={{ width: "100%", background: "#F1F1F1" }}>
  <Typography
-   variant="h6"
+   variant="h5"
    align="center"
    sx={{ fontWeight: "bold", mb: 2, py: 1 }}
  >
@@ -543,7 +543,7 @@ const Orders = () => {
                      scope="row"
                      padding="none"
                    >
-                     <Link to="/orderdetail" style={linkstyle}>
+                     <Link to="/order/detail" style={linkstyle}>
                        {" "}
                        {row.order_id}
                      </Link>

@@ -22,11 +22,11 @@ const PageNotFound = () => {
         consectetur adipisicing elit. Earum, amet perferendis, nemo facere
         excepturi quis.
         </Typography>
+        <div align="center">
+         <Link to="/" style={{ textDecoration: "none", color: "#000000" }}> <Button variant="outlined">GO TO HOME PAGE</Button></Link>
+        </div>
         </Box>
         
-              <div align="center">
-               <Link to="/" style={{ textDecoration: "none", color: "#000000" }}> <Button variant="outlined">GO TO HOME PAGE</Button></Link>
-              </div>
         </div>
   );
 };

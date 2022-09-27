@@ -11,9 +11,9 @@ import {
 } from "@mui/material";
 import React from "react";
 
-const tablecellstyle = { fontWeight: "bold", fontSize: "14px",
+const tablecellstyle = { fontWeight: "bold", fontSize: "14px", textAlign:'center',
 border: '1px solid rgba(224, 224, 224, 1)' };
-const tableborderstyle = {border: '1px solid rgba(224, 224, 224, 1)' };
+const tableborderstyle = { textAlign:'center', border: '1px solid rgba(224, 224, 224, 1)' };
 
 const OrderDetail = () => {
   return (
@@ -74,14 +74,14 @@ const OrderDetail = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              <TableRow orientation="vertical">
+              <TableRow orientation="vertical" align='center'>
                 <TableCell style={tableborderstyle}>Shoes</TableCell>
-                <TableCell style={tableborderstyle}>
+                <TableCell align="center">
                   {" "}
                   <img
-                    src="./assets/image/shoes.jpg"
+                    src="../assets/image/shoes.jpg"
                     alt=""
-                    style={{ width: "100px", height: "100px" }}
+                    style={{ maxWidth: '100px'}}
                   />
                 </TableCell>
                 <TableCell style={tableborderstyle}>XXL</TableCell>

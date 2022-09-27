@@ -11,11 +11,18 @@ import {
   InputAdornment,
   IconButton,
 } from "@material-ui/core";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import { useFormik } from "formik";
-import { signUpSchema } from "./schemas";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import * as Yup from 'yup';
+import { Formik } from 'formik';
+import {
+  Checkbox,
+  FormHelperText,
+  FormControlLabel,
+  CircularProgress
+} from '@mui/material';
+import useAuth from './hooks/useAuth';
+import useRefMounted from './hooks/useRefMounted';
+import { useTranslation } from 'react-i18next';
 
 
 
@@ -25,24 +32,22 @@ const paperStyle = {
   width: 300,
   margin: "20px auto",
 };
-const btnstyle = { margin: "8px 0", background: "#1976d2", color: "#FFFFFF" };
+// const btnstyle = { margin: "8px 0", background: "#1976d2", color: "#FFFFFF" };
 const linkstyle = { color: "#1976d2" };
 
-const initialValues = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
-};
+
+
+
 
 
 
 
   //   ********************************** Main Function***************************************************
-const Signupform = () => {
 
-
+const Registrationform = () => {
+    const { register } = useAuth();
+  const isMountedRef = useRefMounted();
+  const { t } = useTranslation();
   
   //   ********************************** Show Hide Password***************************************************
   const [showPassword, setShowPassword] = useState(false);
@@ -67,23 +72,23 @@ const Signupform = () => {
   event.preventDefault();
 };
   //   ********************************** Form Validations Using Formik ***************************************************
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
-  useFormik({
-    initialValues,
-    validationSchema: signUpSchema,
-    onSubmit: (values, action) => {
-      console.log(
-        "🚀 ~ file: Registration.jsx ~ line 11 ~ Registration ~ values",
-        values
-      );
-      action.resetForm();
-    },
-  });
-  console.log(values)
-console.log(
-  "🚀 ~ file: Registration.jsx ~ line 25 ~ Registration ~ errors",
-  errors
-);
+//   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+//   useFormik({
+//     initialValues,
+//     validationSchema: signUpSchema,
+//     onSubmit: (values, action) => {
+//       console.log(
+//         "🚀 ~ file: Registration.jsx ~ line 11 ~ Registration ~ values",
+//         values
+//       );
+//       action.resetForm();
+//     },
+//   });
+//   console.log(values)
+// console.log(
+//   "🚀 ~ file: Registration.jsx ~ line 25 ~ Registration ~ errors",
+//   errors
+// );
 
 
 
@@ -95,16 +100,68 @@ console.log(
         <Grid align="center">
           <Avatar src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg" />
           <h2>Sign Up</h2>
-        </Grid>
-        <form onSubmit={handleSubmit}>
+        </Grid>   
+         <Formik
+        initialValues={{
+          email: '',
+          name: '',
+          password: '',
+          terms: false,
+          submit: null
+        }}
+        validationSchema={Yup.object().shape({
+          email: Yup.string()
+            .email(t('The email provided should be a valid email address'))
+            .max(255)
+            .required(t('The email field is required')),
+          name: Yup.string().max(255).required(t('The name field is required')),
+          password: Yup.string()
+            .min(8)
+            .max(255)
+            .required(t('The password field is required')),
+          terms: Yup.boolean().oneOf(
+            [true],
+            t('You must agree to our terms and conditions')
+          )
+        })}
+        onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
+          try {
+            await register(values.email, values.name, values.password);
+  
+            if (isMountedRef.current) {
+              setStatus({ success: true });
+              setSubmitting(false);
+            }
+          } catch (err) {
+            console.error(err);
+            setStatus({ success: false });
+            setErrors({ submit: err.message });
+            setSubmitting(false);
+          }
+        }}
+      >
+        {({
+          errors,
+          handleBlur,
+          handleChange,
+          handleSubmit,
+          isSubmitting,
+          touched,
+          values
+        }) => (
+          <form noValidate onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           <Grid item xs={6}>
             <TextField
+            error={Boolean(touched.name && errors.name)}
+            fullWidth
+            margin="normal"
+            helperText={touched.name && errors.name}
               label="First Name"
               placeholder="Enter First Name"
               type="text"
               autoComplete="off"
-              name="firstName"
+              name="name"
               value={values.firstName}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -116,6 +173,10 @@ console.log(
           </Grid>
           <Grid item xs={6}>
             <TextField
+            error={Boolean(touched.name && errors.name)}
+            fullWidth
+            margin="normal"
+            helperText={touched.name && errors.name}
               label="Last Name"
               placeholder="Enter Last Name"
               type="text"
@@ -131,7 +192,10 @@ console.log(
           </Grid>
           <Grid item xs={12}>
             <TextField
-            fullWidth 
+            error={Boolean(touched.name && errors.name)}
+            fullWidth
+            margin="normal"
+            helperText={touched.name && errors.name}
               label="Email"
               placeholder="Enter Email"
               type="email"
@@ -147,7 +211,10 @@ console.log(
           </Grid>
           <Grid item xs={12}>
             <Input 
-            fullWidth 
+            error={Boolean(touched.name && errors.name)}
+            fullWidth
+            margin="normal"
+            helperText={touched.name && errors.name}
             name="password" 
             type={showPassword ? 'text': 'password' }
             placeholder="Enter Password"
@@ -172,7 +239,10 @@ console.log(
           </Grid>
           <Grid item xs={12}>
             <Input 
-            fullWidth 
+            error={Boolean(touched.name && errors.name)}
+            fullWidth
+            margin="normal"
+            helperText={touched.name && errors.name}
             name="confirmPassword" 
             type={confirmPassword ? 'text': 'password' }
             placeholder="Confirm Password"
@@ -195,25 +265,54 @@ console.log(
             ) : null}
           </Grid>
           <Grid item xs={12}>
-            <FormControlLabel
-              control={<Checkbox name="checkedB" color="primary" />}
-              label="Remember me"
+          <FormControlLabel
+          control={
+            <Checkbox
+              checked={values.terms}
+              name="terms"
+              color="primary"
+              onChange={handleChange}
             />
+          }
+          label={
+            <>
+              <Typography variant="body2">
+                {t('I accept the')}{' '}
+                <Link component="a" href="#">
+                  {t('terms and conditions')}
+                </Link>
+                .
+              </Typography>
+            </>
+          }
+        />
+        {Boolean(touched.terms && errors.terms) && (
+          <FormHelperText error>{errors.terms}</FormHelperText>
+        )}
           </Grid>
         </Grid>
-        <Button className="input-button" type="submit" variant="contained" style={btnstyle} fullWidth>
+        <Button color="primary"
+        startIcon={isSubmitting ? <CircularProgress size="1rem" /> : null}
+        disabled={isSubmitting}
+        type="submit"
+        fullWidth
+        size="large"
+        variant="contained">
           Sign Up
         </Button>
         <Typography style={{paddingBottom:'30px'}}>
           Do you have an account ?
           <Link href="/loginform" style={linkstyle}>
-            Sigin Page
+          {t('Create your account')}
           </Link>
         </Typography>
+        
         </form>
+      )}
+    </Formik>
       </Paper>
     </Grid>
   );
 };
 
-export default Signupform;
+export default Registrationform

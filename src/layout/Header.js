@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
+    <>
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
         position="static"
@@ -56,6 +57,16 @@ const Header = () => {
         </Toolbar>
       </AppBar>
     </Box>
+    {/* <div style={{ width: "100%", background: "#F1F1F1" }}>
+    <Typography
+      variant="h5"
+      align="center"
+      sx={{ fontWeight: "bold", mb: 2, py: 1 }}
+    >
+      {title}
+    </Typography>
+  </div> */}
+    </>
   );
 };
 

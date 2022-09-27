@@ -67,8 +67,8 @@ const rows = [
   ),
   createData(
     "#1208",
+    "30 sep, 21:21",
     "Paid",
-    "Athan Travis",
     "Athan Travis",
     "Mastering The Grid",
     "$9.99",
@@ -271,7 +271,7 @@ function EnhancedTableHead(props) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? "center" : "left"}
+            // align={headCell.numeric ? "center" : "left"}
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -496,11 +496,11 @@ export default function EnhancedTable() {
                       >
                         {row.name}
                       </TableCell>
-                      <TableCell align="right">{row.dates}</TableCell>
-                      <TableCell align="right">
-                        {iconChangeHandler(row.status)}{" "}
+                      <TableCell>{row.dates}</TableCell>
+                      <TableCell>
+                      {iconChangeHandler(row.status)}{" "}
                       </TableCell>
-                      <TableCell align="right">
+                      <TableCell>
                         <Stack direction="row" spacing={3}>
                           <Avatar
                             alt="Remy Sharp"
@@ -510,9 +510,9 @@ export default function EnhancedTable() {
                           {row.customer}{" "}
                         </Stack>
                       </TableCell>
-                      <TableCell align="right">{row.purchase}</TableCell>
-                      <TableCell align="right">{row.revenue}</TableCell>
-                      <TableCell align="right">{row.dot}</TableCell>
+                      <TableCell>{row.purchase}</TableCell>
+                      <TableCell>{row.revenue}</TableCell>
+                      <TableCell>{row.dot}</TableCell>
                     </TableRow>
                   );
                 })}
